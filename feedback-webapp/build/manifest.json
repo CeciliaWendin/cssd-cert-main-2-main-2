@@ -1,0 +1,23 @@
+{
+  "id": "feedback-webapp",
+  "version": "0.0.1",
+  "name": {
+    "en": "Feedback-app",
+    "sv": "Feedback-app"
+  },
+  "author": "Cecilia Wendin",
+  "description": {
+    "en": "Provide and list feedback",
+    "sv": "Lämna och lista feedback"
+  },
+  "helpUrl": "https://example.com/webapps",
+  "type": "WebApp",
+  "bundled": true,
+  "requiredLibs": {
+    "react": "17.0.2"
+  },
+  "storage": {
+    "collectionDataStore": "pageFeedback"
+  },
+  "requirePrivileged": true
+}

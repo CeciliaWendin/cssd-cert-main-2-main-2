@@ -1,0 +1,13 @@
+{
+  "id": "feedback-restapp",
+  "version": "0.0.1",
+  "name": "feedback-restapp",
+  "author": "Cecilia Wendin",
+  "description": "RESTapp for CSSD",
+  "helpUrl": "https://example.com/restapps",
+  "type": "RESTApp",
+  "bundled": true,
+  "storage": {
+    "collectionDataStore": "pageFeedback"
+  }
+}

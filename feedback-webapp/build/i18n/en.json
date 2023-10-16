@@ -1,0 +1,11 @@
+{
+  "feedback": "Feedback",
+  "feedbackPlaceholder": "Your feedback",
+  "sendFeedback": "Send",
+  "noPrivUserConfigured": "No privileged user selected",
+  "uploadSuccess": "Thank you for sharing your feedback!",
+  "email": "Recipient of notifications",
+  "feedbackFrom": "Sent by: ",
+  "isOutdated": "The post is out of date",
+  "offlineMode": "The app can only be used in display mode"
+}

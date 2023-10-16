@@ -1,0 +1,11 @@
+{
+  "feedback": "Feedback",
+  "feedbackPlaceholder": "Din feedback",
+  "sendFeedback": "Skicka",
+  "noPrivUserConfigured": "Ingen priviligerad användare vald",
+  "uploadSuccess": "Tack för din feedback!",
+  "email": "Mottagare av notifikationer",
+  "feedbackFrom": "Inskickat av: ",
+  "isOutdated": "Inlägget är utdaterat",
+  "offlineMode": "WebAppen kan endast användas i visningsläget"
+}
