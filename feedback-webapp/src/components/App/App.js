@@ -5,7 +5,6 @@ import FeedbackList from "../FeedbackList/FeedbackList";
 
 
 const App = ( {feedback, isAdmin} ) => {
- 
 
   return (
     <div>
@@ -14,7 +13,7 @@ const App = ( {feedback, isAdmin} ) => {
 
         {isAdmin ? (
           feedback.map((f) =>
-            <FeedbackList key={f.dsid} feedback={f.feedback} userName={f.userName} pageURI={f.page} isOutdated={f.isOutdated}></FeedbackList>
+            <FeedbackList key={f.dsid} feedback={f.feedback} userId={f.userName} pageURI={f.page} isOutdated={f.isOutdated}></FeedbackList>
           ) ) : <></>
         }
     </div>

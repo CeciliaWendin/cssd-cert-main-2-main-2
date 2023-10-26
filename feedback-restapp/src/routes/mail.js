@@ -6,7 +6,6 @@ router.get("/sendMail", (req, res) => {
 
 let mail = {
   email: req.params.email,
-  userName: req.params.userName,
   feedback: req.params.feedback,
   pageURL: req.params.pageURL,
   pageName: req.params.pageName,

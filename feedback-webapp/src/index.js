@@ -6,7 +6,7 @@ import App from "./components/App";
 import storage from "@sitevision/api/server/storage";
 import properties from "@sitevision/api/server/Properties";
 import portletContextUtil from "@sitevision/api/server/PortletContextUtil";
-import propertyUtil from '@sitevision/api/server/PropertyUtil';
+// import propertyUtil from '@sitevision/api/server/PropertyUtil';
 import resourceLocatorUtil from "@sitevision/api/server/ResourceLocatorUtil";
 //import privileged from "@sitevision/api/server/privileged";
 import versionUtil from "@sitevision/api/server/VersionUtil";
@@ -63,7 +63,16 @@ router.get("/", (req, res) => {
   if(req.data.isAdmin) {
   const currentPage = portletContextUtil.getCurrentPage();
   const currentPageId = currentPage.getIdentifier();
-  feedback = getPagesById(currentPageId);
+  feedback = getPagesById(currentPageId).map(feed => {
+    const id = feed.userId;
+    const node = resourceLocatorUtil.getNodeByIdentifier(id);
+  
+    const userName = properties.get(node, 'displayName');
+    return {
+      ...feed, 
+      userName
+    }
+  });
 }
 
   res.agnosticRender(renderToString(<App isInEditor={isInEditor} isAdmin={isAdmin} feedback={feedback} />), {
@@ -77,16 +86,14 @@ router.get("/", (req, res) => {
 router.post("/feedback", (req, res) => { 
   let { feedback } = req.params;
   const isOutdated = false;
-  let userName = propertyUtil.getString(portletContextUtil.getCurrentUser(), "displayName");
   let page = portletContextUtil.getCurrentPage().getIdentifier();
   const pageNode = resourceLocatorUtil.getNodeByIdentifier(page);
   const pageName = properties.get(pageNode, 'displayName');
   const pageData = properties.get(pageNode, pageName, "URI");
-  //let userName = properties.get(user, 'displayName');
+ 
 
   const post = feedbackStore.add({
     page: page,
-    userName,
     userId: portletContextUtil.getCurrentUser().getIdentifier(),
     feedback,
     isOutdated,
@@ -96,7 +103,6 @@ router.post("/feedback", (req, res) => {
 
   const mail = {
     email: appData.get('email'),
-    userName: propertyUtil.getString(portletContextUtil.getCurrentUser(), "displayName"),
     feedback: feedback,
     pageName: pageName,
     pageURL: pageData.Url,
